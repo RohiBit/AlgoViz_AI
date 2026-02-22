@@ -7,19 +7,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get Redis URL from environment (Upstash or local)
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+# Strip trailing slashes to prevent connection issues
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0").rstrip('/')
 
-# Initialize Celery app with Redis broker (supports rediss:// for SSL)
-app = Celery(
-    'algoviz',
-    broker=REDIS_URL,
-    backend=REDIS_URL
-)
+# Initialize Celery app
+app = Celery('algoviz')
 
-# Celery configuration for Upstash Redis with SSL support
-# For rediss:// URLs, configure SSL certificate verification
+# Explicitly set broker and result backend URLs
+app.conf.broker_url = REDIS_URL
+app.conf.result_backend = REDIS_URL
+
+# Configure SSL for rediss:// URLs
 redis_ssl_config = {}
-if REDIS_URL.startswith('rediss://'):
+broker_use_ssl = REDIS_URL.startswith('rediss://')
+
+if broker_use_ssl:
     redis_ssl_config = {
         'ssl_cert_reqs': 'CERT_REQUIRED',
         'ssl_ca_certs': None,  # Use system default CA bundle
@@ -27,6 +29,7 @@ if REDIS_URL.startswith('rediss://'):
         'ssl_keyfile': None,
     }
 
+# Celery configuration for Upstash Redis with SSL support
 app.conf.update(
     broker_connection_retry_on_startup=True,
     broker_connection_retry=True,
@@ -37,12 +40,15 @@ app.conf.update(
     timezone='UTC',
     enable_utc=True,
     # For Upstash SSL connections (rediss://)
-    broker_use_ssl=REDIS_URL.startswith('rediss://'),
+    broker_use_ssl=broker_use_ssl,
     redis_backend_use_ssl=redis_ssl_config,
 )
 
-print(f"✅ Celery configured with Redis: {REDIS_URL[:40]}...")
-print(f"✅ SSL enabled: {REDIS_URL.startswith('rediss://')}")
+print(f"✅ Celery configured with Redis")
+print(f"   Broker URL: {REDIS_URL}")
+print(f"   Result Backend: {REDIS_URL}")
+print(f"   SSL enabled: {broker_use_ssl}")
+print(f"   URL stripped: {REDIS_URL == REDIS_URL.rstrip('/')}")
 
 @app.task(name="render_algorithm")
 def render_algorithm(plan):

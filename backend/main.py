@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Redis and Celery Configuration
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0").rstrip('/')
 CELERY_AVAILABLE = False
 celery_app = None
 
@@ -28,12 +28,18 @@ try:
     redis_client = redis.from_url(REDIS_URL, decode_responses=True)
     redis_client.ping()
     
-    # Initialize Celery app with Redis broker
-    celery_app = Celery('algoviz', broker=REDIS_URL, backend=REDIS_URL)
+    # Initialize Celery app
+    celery_app = Celery('algoviz')
+    
+    # Explicitly set broker and result backend URLs
+    celery_app.conf.broker_url = REDIS_URL
+    celery_app.conf.result_backend = REDIS_URL
     
     # Configure SSL for rediss:// URLs
     redis_ssl_config = {}
-    if REDIS_URL.startswith('rediss://'):
+    broker_use_ssl = REDIS_URL.startswith('rediss://')
+    
+    if broker_use_ssl:
         redis_ssl_config = {
             'ssl_cert_reqs': 'CERT_REQUIRED',
             'ssl_ca_certs': None,
@@ -50,11 +56,14 @@ try:
         result_serializer='json',
         timezone='UTC',
         enable_utc=True,
-        broker_use_ssl=REDIS_URL.startswith('rediss://'),
+        broker_use_ssl=broker_use_ssl,
         redis_backend_use_ssl=redis_ssl_config,
     )
     CELERY_AVAILABLE = True
-    print(f"✅ Redis connected: {REDIS_URL[:30]}...")
+    print(f"✅ Redis connected")
+    print(f"   Broker URL: {REDIS_URL}")
+    print(f"   Result Backend: {REDIS_URL}")
+    print(f"   SSL enabled: {broker_use_ssl}")
     print("✅ Celery available with remote Redis broker")
     
 except Exception as e:
