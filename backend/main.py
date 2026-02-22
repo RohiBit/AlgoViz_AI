@@ -14,17 +14,43 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Redis and Celery Configuration
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 CELERY_AVAILABLE = False
+celery_app = None
+
+# Try to initialize Celery with Redis broker
+try:
+    from celery import Celery
+    import redis
+    
+    # Test Redis connection
+    redis_client = redis.from_url(REDIS_URL, decode_responses=True)
+    redis_client.ping()
+    
+    # Initialize Celery app with Redis broker
+    celery_app = Celery('algoviz', broker=REDIS_URL, backend=REDIS_URL)
+    celery_app.conf.update(
+        task_serializer='json',
+        accept_content=['json'],
+        result_serializer='json',
+        timezone='UTC',
+        enable_utc=True,
+    )
+    CELERY_AVAILABLE = True
+    print(f"✅ Redis connected: {REDIS_URL[:30]}...")
+    print("✅ Celery available with remote Redis broker")
+    
+except Exception as e:
+    print(f"⚠️  Celery/Redis not available: {str(e)}")
+    print("Using synchronous execution (no Celery)")
+    CELERY_AVAILABLE = False
 
 class AsyncResult:
     def __init__(self, *args, **kwargs):
         self.state = "PENDING"
         self.result = None
         self.info = None
-
-celery_app = None
-
-print("Using synchronous execution (no Celery)")
 
 app = FastAPI()
 
@@ -314,7 +340,30 @@ async def get_pipeline_status(task_id: str):
 
 @app.get("/")
 async def root():
-    return {"message": "Algorithm Visualization API", "celery_available": CELERY_AVAILABLE}
+    """
+    Root endpoint - Returns API status and Redis/Celery availability
+    """
+    redis_status = False
+    
+    # Test Redis connection (Upstash with SSL)
+    if CELERY_AVAILABLE:
+        try:
+            import redis
+            redis_client = redis.from_url(REDIS_URL, decode_responses=True)
+            redis_client.ping()
+            redis_status = True
+        except Exception as e:
+            print(f"Redis connection check failed: {e}")
+            redis_status = False
+    
+    return {
+        "message": "Algorithm Visualization API",
+        "celery_available": CELERY_AVAILABLE,
+        "redis_available": redis_status,
+        "redis_url": f"{REDIS_URL[:40]}..." if REDIS_URL else "Not configured",
+        "version": "1.0.0"
+    }
+
 
 
 def trace_code_execution(code: str) -> dict:

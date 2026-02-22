@@ -1,9 +1,38 @@
 from celery import Celery
 import subprocess
 import os
+from dotenv import load_dotenv
 
-# Initialize Celery to use Redis (make sure Redis is running on your laptop!)
-app = Celery('tasks', broker='redis://localhost:6379/0')
+# Load environment variables from .env file
+load_dotenv()
+
+# Get Redis URL from environment (Upstash or local)
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+
+# Initialize Celery app with Redis broker (supports rediss:// for SSL)
+app = Celery(
+    'algoviz',
+    broker=REDIS_URL,
+    backend=REDIS_URL
+)
+
+# Celery configuration for Upstash Redis
+app.conf.update(
+    broker_connection_retry_on_startup=True,
+    broker_connection_retry=True,
+    broker_pool_limit=None,  # Don't limit connection pool for Upstash
+    task_serializer='json',
+    accept_content=['json'],
+    result_serializer='json',
+    timezone='UTC',
+    enable_utc=True,
+    # For Upstash SSL connections
+    broker_use_ssl=REDIS_URL.startswith('rediss://'),
+    redis_backend_use_ssl={'ssl_certfile': None, 'ssl_keyfile': None} if REDIS_URL.startswith('rediss://') else {},
+)
+
+print(f"✅ Celery configured with Redis: {REDIS_URL[:40]}...")
+print(f"✅ SSL enabled: {REDIS_URL.startswith('rediss://')}")
 
 @app.task(name="render_algorithm")
 def render_algorithm(plan):
