@@ -1,15 +1,15 @@
 # Backend Dockerfile - FastAPI with Manim, Celery, and Gemini  
-FROM python:3.11-slim
+FROM python:3.11-bullseye
 
 # Set working directory
 WORKDIR /app
 
 # Install system dependencies for Manim rendering
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libpango-1.0-0 \
-    libpango-1.0-dev \
     libpangoft2-1.0-0 \
+    libpango1.0-dev \
     fonts-dejavu \
     texlive \
     texlive-fonts-recommended \
@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
     make \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
