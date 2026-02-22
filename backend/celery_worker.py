@@ -16,7 +16,17 @@ app = Celery(
     backend=REDIS_URL
 )
 
-# Celery configuration for Upstash Redis
+# Celery configuration for Upstash Redis with SSL support
+# For rediss:// URLs, configure SSL certificate verification
+redis_ssl_config = {}
+if REDIS_URL.startswith('rediss://'):
+    redis_ssl_config = {
+        'ssl_cert_reqs': 'CERT_REQUIRED',
+        'ssl_ca_certs': None,  # Use system default CA bundle
+        'ssl_certfile': None,
+        'ssl_keyfile': None,
+    }
+
 app.conf.update(
     broker_connection_retry_on_startup=True,
     broker_connection_retry=True,
@@ -26,9 +36,9 @@ app.conf.update(
     result_serializer='json',
     timezone='UTC',
     enable_utc=True,
-    # For Upstash SSL connections
+    # For Upstash SSL connections (rediss://)
     broker_use_ssl=REDIS_URL.startswith('rediss://'),
-    redis_backend_use_ssl={'ssl_certfile': None, 'ssl_keyfile': None} if REDIS_URL.startswith('rediss://') else {},
+    redis_backend_use_ssl=redis_ssl_config,
 )
 
 print(f"✅ Celery configured with Redis: {REDIS_URL[:40]}...")

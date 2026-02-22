@@ -30,12 +30,28 @@ try:
     
     # Initialize Celery app with Redis broker
     celery_app = Celery('algoviz', broker=REDIS_URL, backend=REDIS_URL)
+    
+    # Configure SSL for rediss:// URLs
+    redis_ssl_config = {}
+    if REDIS_URL.startswith('rediss://'):
+        redis_ssl_config = {
+            'ssl_cert_reqs': 'CERT_REQUIRED',
+            'ssl_ca_certs': None,
+            'ssl_certfile': None,
+            'ssl_keyfile': None,
+        }
+    
     celery_app.conf.update(
+        broker_connection_retry_on_startup=True,
+        broker_connection_retry=True,
+        broker_pool_limit=None,
         task_serializer='json',
         accept_content=['json'],
         result_serializer='json',
         timezone='UTC',
         enable_utc=True,
+        broker_use_ssl=REDIS_URL.startswith('rediss://'),
+        redis_backend_use_ssl=redis_ssl_config,
     )
     CELERY_AVAILABLE = True
     print(f"✅ Redis connected: {REDIS_URL[:30]}...")

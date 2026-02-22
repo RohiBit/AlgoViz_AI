@@ -30,6 +30,12 @@ COPY . .
 # Give start.sh execution permissions
 RUN chmod +x /app/start.sh
 
+# Create a non-root user for security
+RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
 # Expose port
 EXPOSE 8000
 
