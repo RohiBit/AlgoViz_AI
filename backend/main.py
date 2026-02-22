@@ -268,6 +268,9 @@ def render_algorithm_sync(plan: dict) -> dict:
     elif "selection" in topic.lower():
         template_name = "selection_sort"
         class_name = "SelectionSortFullScene"
+    elif "bubble" in topic.lower():
+        template_name = "bubble_sort"
+        class_name = "BubbleSortFullScene"
     else:
         print(f"No static template for {topic}, generating dynamic Manim code...")
         return generate_dynamic_algorithm_manim(topic, initial_data, task_id)
