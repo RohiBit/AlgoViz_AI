@@ -1,0 +1,9 @@
+python-dotenv
+celery[redis]
+requests
+manim
+transformers>=4.35.0
+torch
+accelerate
+bitsandbytes
+llama-cpp-python

@@ -1,0 +1,10 @@
+topic: bubble_sort
+visual_structure: array
+allowed_actions:
+  - show_array
+  - compare
+  - swap
+  - mark_sorted
+complexity:
+  time: "O(n^2)"
+  space: "O(1)"

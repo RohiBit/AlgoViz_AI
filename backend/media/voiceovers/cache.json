@@ -1,0 +1,191 @@
+[
+  {
+    "input_text": "Merge Sort is a divide and conquer sorting algorithm.",
+    "input_data": {
+      "input_text": "Merge Sort is a divide and conquer sorting algorithm.",
+      "service": "gtts"
+    },
+    "original_audio": "merge-sort-is-a-divide-and-conquer-sorting-0c1f13b7.mp3",
+    "final_audio": "merge-sort-is-a-divide-and-conquer-sorting-0c1f13b7.mp3"
+  },
+  {
+    "input_text": "We start with the complete array.",
+    "input_data": {
+      "input_text": "We start with the complete array.",
+      "service": "gtts"
+    },
+    "original_audio": "we-start-with-the-complete-array-04fb227f.mp3",
+    "final_audio": "we-start-with-the-complete-array-04fb227f.mp3"
+  },
+  {
+    "input_text": "We divide the array into two halves.",
+    "input_data": {
+      "input_text": "We divide the array into two halves.",
+      "service": "gtts"
+    },
+    "original_audio": "we-divide-the-array-into-two-halves-a647d522.mp3",
+    "final_audio": "we-divide-the-array-into-two-halves-a647d522.mp3"
+  },
+  {
+    "input_text": "Each half is divided again until we reach single elements.",
+    "input_data": {
+      "input_text": "Each half is divided again until we reach single elements.",
+      "service": "gtts"
+    },
+    "original_audio": "each-half-is-divided-again-until-we-reach-single-0596fefe.mp3",
+    "final_audio": "each-half-is-divided-again-until-we-reach-single-0596fefe.mp3"
+  },
+  {
+    "input_text": "We now merge elements by comparing and ordering them.",
+    "input_data": {
+      "input_text": "We now merge elements by comparing and ordering them.",
+      "service": "gtts"
+    },
+    "original_audio": "we-now-merge-elements-by-comparing-and-ordering-a8a63cd8.mp3",
+    "final_audio": "we-now-merge-elements-by-comparing-and-ordering-a8a63cd8.mp3"
+  },
+  {
+    "input_text": "Finally, we merge the two sorted halves to get the final sorted array.",
+    "input_data": {
+      "input_text": "Finally, we merge the two sorted halves to get the final sorted array.",
+      "service": "gtts"
+    },
+    "original_audio": "finally-we-merge-the-two-sorted-halves-to-get-the-b62e9324.mp3",
+    "final_audio": "finally-we-merge-the-two-sorted-halves-to-get-the-b62e9324.mp3"
+  },
+  {
+    "input_text": "Merge Sort always runs in n log n time and uses extra space.",
+    "input_data": {
+      "input_text": "Merge Sort always runs in n log n time and uses extra space.",
+      "service": "gtts"
+    },
+    "original_audio": "merge-sort-always-runs-in-n-log-n-time-and-uses-ea78b113.mp3",
+    "final_audio": "merge-sort-always-runs-in-n-log-n-time-and-uses-ea78b113.mp3"
+  },
+  {
+    "input_text": "Merge Sort is a divide and conquer sorting algorithm.",
+    "input_data": {
+      "input_text": "Merge Sort is a divide and conquer sorting algorithm.",
+      "service": "gtts"
+    },
+    "original_audio": "merge-sort-is-a-divide-and-conquer-sorting-0c1f13b7.mp3",
+    "final_audio": "merge-sort-is-a-divide-and-conquer-sorting-0c1f13b7.mp3"
+  },
+  {
+    "input_text": "We start with the complete array.",
+    "input_data": {
+      "input_text": "We start with the complete array.",
+      "service": "gtts"
+    },
+    "original_audio": "we-start-with-the-complete-array-04fb227f.mp3",
+    "final_audio": "we-start-with-the-complete-array-04fb227f.mp3"
+  },
+  {
+    "input_text": "We divide the array into two halves.",
+    "input_data": {
+      "input_text": "We divide the array into two halves.",
+      "service": "gtts"
+    },
+    "original_audio": "we-divide-the-array-into-two-halves-a647d522.mp3",
+    "final_audio": "we-divide-the-array-into-two-halves-a647d522.mp3"
+  },
+  {
+    "input_text": "Each half is divided again until we reach single elements.",
+    "input_data": {
+      "input_text": "Each half is divided again until we reach single elements.",
+      "service": "gtts"
+    },
+    "original_audio": "each-half-is-divided-again-until-we-reach-single-0596fefe.mp3",
+    "final_audio": "each-half-is-divided-again-until-we-reach-single-0596fefe.mp3"
+  },
+  {
+    "input_text": "We now merge elements by comparing and ordering them.",
+    "input_data": {
+      "input_text": "We now merge elements by comparing and ordering them.",
+      "service": "gtts"
+    },
+    "original_audio": "we-now-merge-elements-by-comparing-and-ordering-a8a63cd8.mp3",
+    "final_audio": "we-now-merge-elements-by-comparing-and-ordering-a8a63cd8.mp3"
+  },
+  {
+    "input_text": "Finally, we merge the two sorted halves to get the final sorted array.",
+    "input_data": {
+      "input_text": "Finally, we merge the two sorted halves to get the final sorted array.",
+      "service": "gtts"
+    },
+    "original_audio": "finally-we-merge-the-two-sorted-halves-to-get-the-b62e9324.mp3",
+    "final_audio": "finally-we-merge-the-two-sorted-halves-to-get-the-b62e9324.mp3"
+  },
+  {
+    "input_text": "Merge Sort always runs in n log n time and uses extra space.",
+    "input_data": {
+      "input_text": "Merge Sort always runs in n log n time and uses extra space.",
+      "service": "gtts"
+    },
+    "original_audio": "merge-sort-always-runs-in-n-log-n-time-and-uses-ea78b113.mp3",
+    "final_audio": "merge-sort-always-runs-in-n-log-n-time-and-uses-ea78b113.mp3"
+  },
+  {
+    "input_text": "Selection Sort is a simple comparison-based sorting algorithm. It repeatedly selects the smallest element from the unsorted part and places it at the correct position.",
+    "input_data": {
+      "input_text": "Selection Sort is a simple comparison-based sorting algorithm. It repeatedly selects the smallest element from the unsorted part and places it at the correct position.",
+      "service": "gtts"
+    },
+    "original_audio": "selection-sort-is-a-simple-comparison-based-18a438b0.mp3",
+    "final_audio": "selection-sort-is-a-simple-comparison-based-18a438b0.mp3"
+  },
+  {
+    "input_text": "Unlike Bubble Sort, Selection Sort makes fewer swaps. Each pass selects exactly one minimum element.",
+    "input_data": {
+      "input_text": "Unlike Bubble Sort, Selection Sort makes fewer swaps. Each pass selects exactly one minimum element.",
+      "service": "gtts"
+    },
+    "original_audio": "unlike-bubble-sort-selection-sort-makes-fewer-a0a09163.mp3",
+    "final_audio": "unlike-bubble-sort-selection-sort-makes-fewer-a0a09163.mp3"
+  },
+  {
+    "input_text": "First pass. We search for the smallest element in the entire array.",
+    "input_data": {
+      "input_text": "First pass. We search for the smallest element in the entire array.",
+      "service": "gtts"
+    },
+    "original_audio": "first-pass-we-search-for-the-smallest-element-in-0c50ca69.mp3",
+    "final_audio": "first-pass-we-search-for-the-smallest-element-in-0c50ca69.mp3"
+  },
+  {
+    "input_text": "Second pass. We now search in the remaining unsorted portion.",
+    "input_data": {
+      "input_text": "Second pass. We now search in the remaining unsorted portion.",
+      "service": "gtts"
+    },
+    "original_audio": "second-pass-we-now-search-in-the-remaining-4b36274b.mp3",
+    "final_audio": "second-pass-we-now-search-in-the-remaining-4b36274b.mp3"
+  },
+  {
+    "input_text": "Third pass. The sorted portion continues to grow.",
+    "input_data": {
+      "input_text": "Third pass. The sorted portion continues to grow.",
+      "service": "gtts"
+    },
+    "original_audio": "third-pass-the-sorted-portion-continues-to-grow-cedf7548.mp3",
+    "final_audio": "third-pass-the-sorted-portion-continues-to-grow-cedf7548.mp3"
+  },
+  {
+    "input_text": "Fourth pass. Only one comparison remains.",
+    "input_data": {
+      "input_text": "Fourth pass. Only one comparison remains.",
+      "service": "gtts"
+    },
+    "original_audio": "fourth-pass-only-one-comparison-remains-6a987a6e.mp3",
+    "final_audio": "fourth-pass-only-one-comparison-remains-6a987a6e.mp3"
+  },
+  {
+    "input_text": "Selection Sort always performs the same number of comparisons. Its time complexity is order n squared.",
+    "input_data": {
+      "input_text": "Selection Sort always performs the same number of comparisons. Its time complexity is order n squared.",
+      "service": "gtts"
+    },
+    "original_audio": "selection-sort-always-performs-the-same-number-of-e700aa2c.mp3",
+    "final_audio": "selection-sort-always-performs-the-same-number-of-e700aa2c.mp3"
+  }
+]

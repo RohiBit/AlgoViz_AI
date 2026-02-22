@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:03,908
+Merge Sort is a divide and conquer sorting algorithm.
+
+2
+00:00:05,000 --> 00:00:07,348
+We start with the complete array.
+
+3
+00:00:07,400 --> 00:00:10,204
+We divide the array into two halves.
+
+4
+00:00:10,266 --> 00:00:14,534
+Each half is divided again until we reach single elements.
+
+5
+00:00:14,600 --> 00:00:18,436
+We now merge elements by comparing and ordering them.
+
+6
+00:00:20,533 --> 00:00:26,073
+Finally, we merge the two sorted halves to get the final sorted array.
+
+7
+00:00:26,133 --> 00:00:31,769
+Merge Sort always runs in n log n time and uses extra space.
+
