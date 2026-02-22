@@ -34,6 +34,7 @@ os.makedirs("media", exist_ok=True)
 ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local development
     "https://algoviz-frontend.vercel.app",  # Production (Vercel)
+    "https://algovizfrontend-lgbv5u3hy-rkprinczs-projects.vercel.app",  # Vercel preview
 ]
 
 # Allow additional origins from environment variable for flexibility
@@ -41,9 +42,14 @@ if os.getenv("ALLOWED_ORIGINS"):
     additional_origins = os.getenv("ALLOWED_ORIGINS").split(",")
     ALLOWED_ORIGINS.extend([origin.strip() for origin in additional_origins])
 
+# Regex pattern to allow all Vercel preview deployments for this project
+# Matches: https://<anything-with-project-name>-<user>-projects.vercel.app
+vercel_preview_regex = r"https://.*\.vercel\.app"
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=vercel_preview_regex,  # Allows all Vercel preview deployments
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
