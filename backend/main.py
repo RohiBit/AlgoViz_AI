@@ -9,6 +9,10 @@ import json
 import subprocess
 import sys
 import io
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 CELERY_AVAILABLE = False
 
@@ -26,9 +30,20 @@ app = FastAPI()
 
 os.makedirs("media", exist_ok=True)
 
+# CORS Configuration for development and production
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Local development
+    "https://algoviz-frontend.vercel.app",  # Production (Vercel)
+]
+
+# Allow additional origins from environment variable for flexibility
+if os.getenv("ALLOWED_ORIGINS"):
+    additional_origins = os.getenv("ALLOWED_ORIGINS").split(",")
+    ALLOWED_ORIGINS.extend([origin.strip() for origin in additional_origins])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,7 +51,14 @@ app.add_middleware(
 
 app.mount("/media", StaticFiles(directory="media"), name="media")
 
-GEMINI_API_KEY = "AIzaSyCcvnZKv7RGup0ibIg4p9TDuRJe1ecttAQ"
+# Load API key securely from environment variables
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    raise ValueError(
+        "GEMINI_API_KEY environment variable is not set. "
+        "Please create a .env file or set the environment variable."
+    )
 
 class VisualRequest(BaseModel):
     topic: str

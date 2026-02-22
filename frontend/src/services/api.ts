@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { TeachingPlan, RenderTask, PipelineStep } from '../types';
 
+// Get API URL from environment variables with fallback
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 // Create axios client for FastAPI backend
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

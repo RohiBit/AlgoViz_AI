@@ -1,4 +1,6 @@
-# Python
+# ============================================================================
+# PYTHON
+# ============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -23,32 +25,26 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Poetry
+poetry.lock
+dist/
+
 # Virtual environments
 venv/
 env/
 ENV/
 env.bak/
 venv.bak/
+.venv/
 
 # Celery
 celerybeat-schedule
 dump.rdb
+celerybeat.pid
 
-# IDE
-.vscode/
-!.vscode/extensions.json
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Node
+# ============================================================================
+# NODE.JS / FRONTEND
+# ============================================================================
 node_modules/
 dist/
 dist-ssr/
@@ -59,14 +55,69 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Generated media/outputs
-backend/media/*.mp4
-backend/media/*.wav
-backend/media/*.srt
-backend/templates/dynamic_cache/
-backend/media/voiceovers/*
-!backend/media/voiceovers/cache.json
-backend/media/images/
+# ============================================================================
+# ENVIRONMENT VARIABLES - NEVER COMMIT THESE
+# ============================================================================
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
+frontend/.env.local
+frontend/.env.production.local
 
+# ============================================================================
+# IDE / EDITOR
+# ============================================================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.eclipse
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# MANIM GENERATED MEDIA OUTPUT
+# ============================================================================
+backend/media/
+!backend/media/.gitkeep
+backend/templates/dynamic_cache/
+backend/media/voiceovers/
+backend/media/images/
+backend/media/videos/
+backend/media/partial_movie_files/
+backend/media/texts/
+
+# ============================================================================
+# OS SPECIFIC
+# ============================================================================
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+
+# ============================================================================
+# PROJECT SPECIFIC
+# ============================================================================
 # Temporary/problematic files
 frontend/src/components/Dashboard.tsx*to use a tool*
+
+# Cache files
+*.cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
