@@ -1,0 +1,34 @@
+topic: singly_linked_list
+display_name: Singly Linked List
+description: |
+  Visualization for a singly linked list showing nodes with `value` and
+  `next` pointers. Useful for explaining traversal, insertion (head/tail), and
+  deletion operations.
+visual_structure: linked_list
+template_path: templates/singlell.py
+scene_class: SinglyLinkedListScene
+sample_input: [7, 14, 21]
+allowed_actions:
+  - traverse
+  - insert_head
+  - insert_tail
+  - delete
+  - update_node
+steps:
+  - name: build
+    description: Render nodes and pointer arrows between them.
+  - name: traverse
+    description: Animate a pointer moving from head to tail and reading values.
+  - name: mutate
+    description: Show insertion and deletion with pointer re-wiring.
+complexity:
+  time: "O(n) for traversal"
+  space: "O(n)"
+tags:
+  - data_structure
+  - linked_list
+prerequisites:
+  - pointers
+  - nodes
+fallback_to_dynamic: false
+notes: "`singlell.py` filename corresponds to singly-linked-list template. Ensure class name matches scene_class."

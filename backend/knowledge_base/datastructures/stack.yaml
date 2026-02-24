@@ -1,0 +1,30 @@
+topic: stack
+display_name: Stack (LIFO)
+description: |
+  Stack visualization that demonstrates push, pop, peek operations and the
+  LIFO behavior. Visualized as a vertical column of boxed elements with a
+  pointer to the top element.
+visual_structure: vertical_stack
+template_path: templates/stack.py
+scene_class: StackScene
+sample_input: [1, 2, 3]
+allowed_actions:
+  - push
+  - pop
+  - peek
+  - highlight_top
+steps:
+  - name: title_intro
+    description: Show title and introduce push/pop behavior.
+  - name: operations
+    description: Perform a sequence of pushes and pops while annotating.
+complexity:
+  time: "O(1) per operation"
+  space: "O(n)"
+tags:
+  - data_structure
+  - stack
+prerequisites:
+  - arrays
+fallback_to_dynamic: false
+notes: "Used for teaching stack operations; scene_class is expected to exist in templates/stack.py"

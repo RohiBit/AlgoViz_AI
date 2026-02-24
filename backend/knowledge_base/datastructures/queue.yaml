@@ -1,0 +1,28 @@
+topic: queue
+display_name: Queue (FIFO)
+description: |
+  Queue visualization demonstrating enqueue and dequeue operations (FIFO).
+  Visualized as a horizontal row or vertical column with head and tail markers.
+visual_structure: queue
+template_path: templates/queue.py
+scene_class: QueueScene
+sample_input: [10, 20, 30]
+allowed_actions:
+  - enqueue
+  - dequeue
+  - peek
+steps:
+  - name: intro
+    description: Explain FIFO semantics and show initial queue contents.
+  - name: operations
+    description: Animate enqueue and dequeue operations with head/tail markers.
+complexity:
+  time: "O(1) per operation (amortized)"
+  space: "O(n)"
+tags:
+  - data_structure
+  - queue
+prerequisites:
+  - arrays
+fallback_to_dynamic: false
+notes: "`queue.py` should visualize head/tail pointers; useful for BFS teaching."

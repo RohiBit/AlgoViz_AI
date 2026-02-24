@@ -1,5 +1,28 @@
 topic: bubble_sort
+display_name: Bubble Sort
+description: |
+  Bubble Sort repeatedly compares adjacent elements and swaps them if they are
+  in the wrong order. It is pedagogically useful for demonstrating nested
+  loops and early-exit optimization when no swaps occur on a pass.
 visual_structure: array
+scene_class: BubbleSortFullScene
+template_path: templates/bubble_sort.py
+sample_input: [5, 1, 4, 2, 8]
+voiceover_snippets:
+  - "Bubble Sort is a simple comparison-based sorting algorithm."
+  - "It repeatedly compares adjacent elements and swaps them if needed."
+  - "If a full pass completes without any swaps, the algorithm can stop early."
+steps:
+  - name: title_intro
+    description: Show title and an overview voiceover.
+  - name: show_array
+    description: Render initial array as boxes with numbers.
+  - name: passes
+    description: For each pass, highlight adjacent pairs, compare and swap if needed.
+  - name: optimization
+    description: Demonstrate early-stop optimization when no swaps happen.
+  - name: complexity
+    description: Show time complexity and final state.
 allowed_actions:
   - show_array
   - compare
@@ -8,3 +31,14 @@ allowed_actions:
 complexity:
   time: "O(n^2)"
   space: "O(1)"
+tags:
+  - sorting
+  - pedagogical
+prerequisites:
+  - arrays
+  - basic loops
+fallback_to_dynamic: false
+notes: |
+  This file maps the static `bubble_sort.py` template to a knowledge entry. The
+  `voiceover_snippets` are used to populate the static template's speech blocks
+  when rendering a teaching video.

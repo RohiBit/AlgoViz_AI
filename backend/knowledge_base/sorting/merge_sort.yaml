@@ -1,0 +1,43 @@
+topic: merge_sort
+display_name: Merge Sort
+description: |
+  Merge Sort is a divide-and-conquer sorting algorithm that recursively splits
+  the array into halves, sorts each half, and merges them to produce a sorted array.
+visual_structure: merge_tree
+scene_class: MergeSortTreeFinal
+template_path: templates/merge_sort.py
+sample_input: [38, 27, 43, 10]
+voiceover_snippets:
+  - "Merge Sort is a divide and conquer sorting algorithm."
+  - "We divide the array into two halves."
+  - "Each half is divided again until we reach single elements."
+  - "Finally, we merge the two sorted halves to get the final sorted array."
+steps:
+  - name: title_intro
+    description: Show title and brief introduction voiceover.
+  - name: split
+    description: Recursively split the array into halves and display tree nodes.
+  - name: merge
+    description: Merge child nodes while showing comparisons and ordered outputs.
+  - name: final_merge
+    description: Assemble final sorted array and show complexity.
+allowed_actions:
+  - show_array
+  - split
+  - merge
+  - highlight_compare
+  - show_complexity
+complexity:
+  time: "O(n log n)"
+  space: "O(n)"
+tags:
+  - sorting
+  - divide_and_conquer
+  - stable
+prerequisites:
+  - understanding of arrays
+  - basic recursion
+fallback_to_dynamic: false
+notes: |
+  This template renders a visual merge tree. Use static template for reliable
+ , reproducible renders in production.

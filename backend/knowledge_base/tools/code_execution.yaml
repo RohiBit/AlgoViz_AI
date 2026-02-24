@@ -1,0 +1,38 @@
+topic: code_execution
+display_name: Code Execution Trace
+description: |
+  Template for visualizing step-by-step code execution and dataflow. Used by
+  the `code_execution.py` template to illustrate line-by-line variable state,
+  call stacks, and heap/stack views for small code snippets.
+visual_structure: code_trace
+template_path: templates/code_execution.py
+scene_class: CodeExecutionScene
+sample_input: |
+  def add(a, b):
+      return a + b
+  print(add(2, 3))
+allowed_actions:
+  - highlight_line
+  - show_variable
+  - push_stack
+  - pop_stack
+  - animate_value_change
+steps:
+  - name: parse_and_setup
+    description: Parse code and display initial environment (locals/globals).
+  - name: step_execution
+    description: Execute each line visually, update variable views and call stack.
+  - name: result
+    description: Show final output and optional complexity notes.
+complexity:
+  time: "Depends on snippet"
+  space: "Depends on snippet"
+tags:
+  - tracing
+  - education
+prerequisites:
+  - basic_python
+fallback_to_dynamic: true
+notes: |
+  This template supports visual code tracing and is used for whiteboard-style
+  natural language requests where generating an execution trace is required.

@@ -1,0 +1,37 @@
+topic: selection_sort
+display_name: Selection Sort
+description: |
+  Selection Sort repeatedly selects the smallest (or largest) element from the
+  unsorted portion and places it at the correct position. It performs a linear
+  scan per pass and swaps once per pass.
+visual_structure: array
+scene_class: SelectionSortFullScene
+template_path: templates/selection_sort.py
+sample_input: [64, 25, 12, 22, 11]
+voiceover_snippets:
+  - "Selection Sort selects the smallest element and places it at the front."
+  - "Each pass selects exactly one minimum element."
+steps:
+  - name: title_intro
+    description: Play title and short idea text with voiceover.
+  - name: select_min
+    description: Highlight scanning region, identify minimum, and perform swap.
+  - name: mark_sorted
+    description: Mark elements as sorted as they are placed in final position.
+allowed_actions:
+  - show_array
+  - highlight_range
+  - select_min
+  - swap
+  - mark_sorted
+complexity:
+  time: "O(n^2)"
+  space: "O(1)"
+tags:
+  - sorting
+  - selection
+prerequisites:
+  - arrays
+  - comparisons
+fallback_to_dynamic: false
+notes: "Use static template for deterministic visuals and voiceover segments."

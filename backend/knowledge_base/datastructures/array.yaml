@@ -1,0 +1,32 @@
+topic: array
+display_name: Array (visual)
+description: |
+  Generic array visualization used by several templates. Shows elements as
+  boxed cells arranged horizontally. Useful for demonstrating indexing,
+  traversals, and simple in-place updates.
+visual_structure: array
+template_path: templates/array.py
+scene_class: ArrayScene
+sample_input: [3, 1, 4, 1, 5]
+allowed_actions:
+  - show_array
+  - highlight_index
+  - update_value
+  - animate_swap
+steps:
+  - name: create_array
+    description: Render boxed cells with element labels.
+  - name: update
+    description: Animate value updates and highlight indices.
+complexity:
+  time: "O(n)"
+  space: "O(n)"
+tags:
+  - data_structure
+  - array
+prerequisites:
+  - basic_arrays
+fallback_to_dynamic: false
+notes: |
+  `array.py` is a small helper scene used by other template scenes to render
+  arrays consistently. It's not intended to represent a full algorithm on its own.
