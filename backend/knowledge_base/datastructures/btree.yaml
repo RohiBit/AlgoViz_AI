@@ -1,0 +1,39 @@
+topic: btree
+display_name: B-Tree (Multi-way Balanced Tree)
+description: |
+  B-Tree is a multi-way balanced tree optimized for disk I/O. Each node can have
+  many keys and children, reducing tree height. Widely used in databases and
+  file systems.
+visual_structure: tree
+scene_class: BTreeViz
+template_path: templates/templates.py
+sample_input: [30, 70, 10, 20, 40, 60, 80, 90]
+voiceover_snippets:
+  - "B-Trees are optimized for databases and file systems."
+  - "Each node can have multiple keys and children."
+  - "All leaves have the same depth."
+  - "Node splits occur when a node overflows."
+steps:
+  - name: title_and_degree
+    description: Show B-Tree with specified degree (e.g., degree 3).
+  - name: insertion
+    description: Insert values, showing splits when needed.
+  - name: final_tree
+    description: Display balanced B-Tree with multiple keys per node.
+allowed_actions:
+  - insert
+  - split_node
+  - search
+  - highlight_keys
+complexity:
+  time: "O(log n) for insert, delete, search"
+  space: "O(n)"
+tags:
+  - data_structure
+  - tree
+  - database
+  - disk_io_optimized
+prerequisites:
+  - balanced_trees
+fallback_to_dynamic: false
+notes: "Used in databases (MySQL, PostgreSQL) and file systems (NTFS, ext4)."

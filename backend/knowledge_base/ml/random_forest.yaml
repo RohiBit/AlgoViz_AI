@@ -1,0 +1,43 @@
+topic: random_forest
+display_name: Random Forest Classifier
+description: |
+  Random Forest is an ensemble of decision trees trained on random subsets of data
+  and features. Predictions are aggregated via majority voting (classification) or
+  averaging (regression). Reduces overfitting and improves robustness.
+visual_structure: forest_grid
+scene_class: RandomForestViz
+template_path: templates/templates.py
+sample_input: {"n_trees": 5, "data": [[2.0, 3.0], [1.5, 2.0], [5.0, 6.0]], "labels": [0, 0, 1]}
+voiceover_snippets:
+  - "Random Forest trains multiple decision trees on random subsets."
+  - "Each tree is trained on a bootstrap sample of the data."
+  - "Features are also sampled randomly at each split."
+  - "Final predictions aggregate votes from all trees (bagging/voting)."
+steps:
+  - name: initialize_forest
+    description: Show forest with multiple trees.
+  - name: build_trees
+    description: Train each tree on random data/feature subsets.
+  - name: aggregation
+    description: Illustrate majority voting for classification.
+  - name: final_prediction
+    description: Show ensemble decision boundary and prediction.
+allowed_actions:
+  - build_tree
+  - show_bootstrap_sample
+  - aggregate_predictions
+  - show_feature_importance
+  - visualize_oob_error
+complexity:
+  time: "O(n * m * log n) where m = number of trees"
+  space: "O(n * m)"
+tags:
+  - machine_learning
+  - ensemble
+  - classification
+  - robust
+prerequisites:
+  - decision_trees
+  - bagging
+fallback_to_dynamic: false
+notes: "Robust to overfitting; feature importance estimates help with interpretability."

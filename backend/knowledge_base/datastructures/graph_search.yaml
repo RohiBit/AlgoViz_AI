@@ -1,0 +1,44 @@
+topic: graph_search
+display_name: Graph Search Algorithms (BFS/DFS/Dijkstra)
+description: |
+  Graph search algorithms explore nodes in a graph. BFS explores level-by-level (queue),
+  DFS explores depth-first (stack), and Dijkstra finds shortest paths with weighted edges.
+visual_structure: graph
+scene_class: GraphSearchViz
+template_path: templates/templates.py
+sample_input: {"nodes": ["A", "B", "C", "D"], "edges": [["A", "B"], ["A", "C"], ["B", "D"], ["C", "D"]]}
+voiceover_snippets:
+  - "Graph searches explore connected nodes in different orders."
+  - "BFS uses a queue and explores level-by-level."
+  - "DFS uses a stack and explores depth-first."
+  - "Dijkstra finds shortest paths with weighted edges."
+steps:
+  - name: build_graph
+    description: Construct graph with nodes and edges.
+  - name: algorithm_selection
+    description: Choose BFS, DFS, or Dijkstra.
+  - name: traversal
+    description: Animate the traversal or shortest path computation.
+  - name: final_path
+    description: Show final traversal order or shortest path.
+allowed_actions:
+  - build_graph
+  - explore_node
+  - enqueue_dequeue
+  - push_pop
+  - relax_edge
+  - highlight_path
+complexity:
+  time: "O(n + m) for BFS/DFS; O((n + m) log n) for Dijkstra (with min-heap)"
+  space: "O(n) for queue/stack"
+tags:
+  - graph
+  - algorithm
+  - search
+  - shortest_path
+prerequisites:
+  - graphs
+  - queues
+  - stacks
+fallback_to_dynamic: false
+notes: "Can visualize unweighted graphs (BFS/DFS) and weighted graphs (Dijkstra)."

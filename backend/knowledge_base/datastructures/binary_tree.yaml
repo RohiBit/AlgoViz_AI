@@ -1,0 +1,40 @@
+topic: binary_tree
+display_name: Binary Tree (Unbalanced)
+description: |
+  A binary tree is a hierarchical data structure where each node has at most two
+  children (left and right). Tree traversals (in-order, pre-order, post-order)
+  are fundamental operations used in many algorithms.
+visual_structure: tree
+scene_class: BinaryTreeViz
+template_path: templates/templates.py
+sample_input: [1, 2, 3, 4, 5, 6, 7]
+voiceover_snippets:
+  - "Binary trees organize data hierarchically."
+  - "Each node can have a left child and a right child."
+  - "Tree traversals visit nodes in different orders: in-order, pre-order, post-order."
+steps:
+  - name: build_tree
+    description: Construct tree from array representation.
+  - name: traverse_inorder
+    description: Visit nodes in in-order (left, root, right).
+  - name: traverse_preorder
+    description: Visit nodes in pre-order (root, left, right).
+  - name: traverse_postorder
+    description: Visit nodes in post-order (left, right, root).
+allowed_actions:
+  - build_tree
+  - traverse
+  - highlight_path
+  - mark_subtree
+complexity:
+  time: "O(n) for traversal"
+  space: "O(h) for recursion stack (h = height)"
+tags:
+  - data_structure
+  - tree
+  - traversal
+prerequisites:
+  - recursion
+  - basic_trees
+fallback_to_dynamic: false
+notes: "Tree structure is not self-balancing; height can degrade to O(n) in worst case."

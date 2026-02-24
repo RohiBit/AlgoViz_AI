@@ -1,0 +1,43 @@
+topic: linear_regression
+display_name: Linear Regression (2D)
+description: |
+  Linear Regression finds the best-fit line y = mx + b through data points.
+  Minimizes mean squared error (MSE) loss using gradient descent. Useful for
+  continuous prediction and understanding optimization basics.
+visual_structure: scatter_plot_with_line
+scene_class: LinearRegressionViz
+template_path: templates/templates.py
+sample_input: [[0.5, 0.8], [1.5, 2.0], [2.5, 3.2], [3.5, 4.0], [4.0, 4.5]]
+voiceover_snippets:
+  - "Linear regression finds the best-fit line through data."
+  - "We minimize the sum of squared errors (distances from points to line)."
+  - "Gradient descent iteratively adjusts the line's slope and intercept."
+  - "After optimization, the line minimizes total error."
+steps:
+  - name: plot_data
+    description: Show data points as scatter plot.
+  - name: initial_line
+    description: Display an initial bad-fit line.
+  - name: gradient_descent
+    description: Iteratively improve the line using gradient descent.
+  - name: final_line
+    description: Show optimized best-fit line and final loss.
+allowed_actions:
+  - plot_points
+  - draw_line
+  - compute_residuals
+  - update_parameters
+  - visualize_loss
+complexity:
+  time: "O(n * iterations) for gradient descent"
+  space: "O(n)"
+tags:
+  - machine_learning
+  - regression
+  - optimization
+  - 2d
+prerequisites:
+  - calculus_basics
+  - linear_algebra
+fallback_to_dynamic: false
+notes: "Foundation for understanding gradient descent and loss optimization."

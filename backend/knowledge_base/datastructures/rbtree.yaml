@@ -1,0 +1,40 @@
+topic: red_black_tree
+display_name: Red-Black Tree
+description: |
+  Red-Black Tree is a self-balancing binary search tree with a red or black color
+  property. It maintains balance through rotations and recoloring, ensuring O(log n)
+  operations while being simpler than AVL trees.
+visual_structure: tree
+scene_class: RBTreeViz
+template_path: templates/templates.py
+sample_input: [25, 10, 40, 5, 15, 35, 50]
+voiceover_snippets:
+  - "Red-Black Trees use colors (red, black) to maintain balance."
+  - "Property: Root is always BLACK."
+  - "Property: RED nodes cannot have RED children."
+  - "Property: All paths have equal number of BLACK nodes."
+steps:
+  - name: title_intro
+    description: Show red-black tree properties.
+  - name: insertion
+    description: Insert value and recolor/rotate as needed.
+  - name: verify_properties
+    description: Verify all red-black properties hold.
+allowed_actions:
+  - insert
+  - recolor
+  - rotate
+  - highlight_violations
+complexity:
+  time: "O(log n) for insert, delete, search"
+  space: "O(n)"
+tags:
+  - data_structure
+  - tree
+  - balanced
+  - self_balancing
+prerequisites:
+  - binary_search_trees
+  - tree_rotations
+fallback_to_dynamic: false
+notes: "Simpler than AVL with similar O(log n) guarantees. Used in Linux kernel."

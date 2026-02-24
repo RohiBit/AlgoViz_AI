@@ -1,0 +1,43 @@
+topic: support_vector_machine
+display_name: Support Vector Machine (SVM)
+description: |
+  SVM finds the optimal hyperplane that maximizes the margin (distance) between
+  two classes. Supports linear and non-linear kernels. Robust for binary and
+  multi-class classification.
+visual_structure: scatter_plot_with_hyperplane
+scene_class: SVMViz
+template_path: templates/templates.py
+sample_input: {"class_0": [[0.5, 0.5], [1.0, 1.0], [1.5, 0.8]], "class_1": [[3.5, 3.5], [4.0, 4.0], [3.8, 3.2]]}
+voiceover_snippets:
+  - "Support Vector Machines find the optimal separating hyperplane."
+  - "The margin is the distance between the hyperplane and nearest points (support vectors)."
+  - "SVMs maximize this margin for better generalization."
+  - "Support vectors lie on the margin boundaries; other points are ignored."
+steps:
+  - name: plot_classes
+    description: Show two-class scatter plot.
+  - name: separating_hyperplane
+    description: Display the optimal separating hyperplane.
+  - name: margins
+    description: Visualize margin lines parallel to hyperplane.
+  - name: support_vectors
+    description: Highlight support vectors on margin boundaries.
+allowed_actions:
+  - plot_points
+  - draw_hyperplane
+  - show_margins
+  - highlight_support_vectors
+  - show_kernel_trick
+complexity:
+  time: "O(n^2) or O(n^3) depending on solver"
+  space: "O(n) for support vectors"
+tags:
+  - machine_learning
+  - classification
+  - svm
+  - 2d
+prerequisites:
+  - linear_algebra
+  - convex_optimization
+fallback_to_dynamic: false
+notes: "Excellent for binary and multi-class problems; supports kernel tricks for non-linear separation."

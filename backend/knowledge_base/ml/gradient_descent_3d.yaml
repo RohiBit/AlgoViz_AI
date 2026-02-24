@@ -1,0 +1,54 @@
+topic: gradient_descent_3d
+display_name: Gradient Descent (3D Optimization)
+description: |
+  3D Gradient Descent visualizes optimization on a loss surface z = f(w1, w2).
+  Starting from an initial point, the algorithm iteratively moves down the steepest
+  gradient direction until convergence. Helps understand optimization landscapes
+  and the role of learning rates.
+visual_structure: 3d_surface_with_trajectory
+scene_class: GradientDescent3DViz
+template_path: templates/templates.py
+sample_input: {"loss_function": "w1^2 + 2*w2^2", "initial_w": [2.5, 2.0], "learning_rate": 0.1, "steps": 15}
+voiceover_snippets:
+  - "Gradient descent optimizes parameters by following the steepest descent direction."
+  - "The loss surface shows how loss depends on two parameters (w1, w2)."
+  - "At each step, we move in the direction opposite to the gradient."
+  - "Learning rate controls step size; too high causes divergence, too low is slow."
+  - "Convergence occurs when gradients become very small near the minimum."
+steps:
+  - name: visualize_loss_surface
+    description: Display 3D quadratic loss surface (or other function).
+  - name: initialize_point
+    description: Place starting point at initial parameters on surface.
+  - name: compute_gradient
+    description: Show gradient vector (steepest ascent) at current point.
+  - name: descent_step
+    description: Animate downward movement along negative gradient.
+  - name: iterate_and_converge
+    description: Repeat steps with trajectory path highlighting convergence.
+  - name: final_minimum
+    description: Show converged point at local/global minimum.
+allowed_actions:
+  - visualize_surface
+  - compute_gradient
+  - step_descent
+  - show_trajectory
+  - adjust_learning_rate
+  - reset_and_iterate
+complexity:
+  time: "O(steps * n) where n = number of parameters"
+  space: "O(n) for parameter storage"
+tags:
+  - machine_learning
+  - optimization
+  - gradient_descent
+  - 3d
+  - visualization
+prerequisites:
+  - calculus_multivariable
+  - gradients
+  - loss_functions
+fallback_to_dynamic: false
+notes: |
+  Powerful visualization tool for understanding optimization. In 3D, users can rotate
+  camera to see loss landscape from all angles. Extend to higher dimensions conceptually.

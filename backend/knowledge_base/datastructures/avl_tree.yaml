@@ -1,0 +1,48 @@
+topic: avl_tree
+display_name: AVL Tree (Balanced BST)
+description: |
+  AVL Tree is a self-balancing binary search tree that maintains balance through
+  rotations (LL, RR, LR, RL). Every insertion/deletion triggers rebalancing to
+  ensure all subtrees have height difference ≤ 1.
+visual_structure: tree
+scene_class: AVLTreeViz
+template_path: templates/templates.py
+sample_input: [50, 25, 75, 10, 30, 60, 80, 5, 15]
+voiceover_snippets:
+  - "AVL Trees maintain balance through rotations."
+  - "Every node tracks a balance factor (height difference)."
+  - "Unbalanced nodes trigger rotations: LL, RR, LR, or RL."
+  - "After balancing, all subtrees have height difference ≤ 1."
+steps:
+  - name: title_intro
+    description: Introduce AVL trees and balance property.
+  - name: insertion
+    description: Insert values one-by-one, showing balance factor updates.
+  - name: rotation
+    description: Animate rotations when imbalance is detected.
+  - name: final_tree
+    description: Display balanced tree with all heights and balance factors.
+allowed_actions:
+  - insert
+  - rebalance
+  - rotate_ll
+  - rotate_rr
+  - rotate_lr
+  - rotate_rl
+  - highlight_balance_factor
+complexity:
+  time: "O(log n) for insert, delete, search (balanced)"
+  space: "O(n)"
+tags:
+  - data_structure
+  - tree
+  - balanced
+  - self_balancing
+prerequisites:
+  - binary_search_trees
+  - rotations
+fallback_to_dynamic: false
+notes: |
+  Gold standard template implementation. All other templates follow this level
+  of detail and structure. Scene includes balance factor tracking and rotation
+  visualization.

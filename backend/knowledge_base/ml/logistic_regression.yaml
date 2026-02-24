@@ -1,0 +1,43 @@
+topic: logistic_regression
+display_name: Logistic Regression (Binary Classification)
+description: |
+  Logistic regression uses the sigmoid function σ(z) = 1/(1+e^-z) to output
+  probabilities for binary classification. Minimizes cross-entropy loss using
+  gradient descent.
+visual_structure: scatter_plot_with_sigmoid
+scene_class: LogisticRegressionViz
+template_path: templates/templates.py
+sample_input: {"class_0": [[0.5, 0.2], [1.0, 0.3], [1.5, 0.1]], "class_1": [[3.0, 0.8], [3.5, 0.9], [4.0, 0.7]]}
+voiceover_snippets:
+  - "Logistic regression classifies samples into two categories."
+  - "The sigmoid function maps any input to a probability between 0 and 1."
+  - "The decision boundary is at probability 0.5."
+  - "Cross-entropy loss drives the sigmoid curve to fit class separation."
+steps:
+  - name: plot_classes
+    description: Show two-class scatter plot with distinct colors.
+  - name: sigmoid_curve
+    description: Display initial and evolving sigmoid curve.
+  - name: decision_boundary
+    description: Highlight the decision boundary at p=0.5.
+  - name: final_classification
+    description: Show final learned sigmoid and classification accuracy.
+allowed_actions:
+  - plot_points
+  - draw_sigmoid
+  - show_probability
+  - highlight_decision_boundary
+  - show_loss_curve
+complexity:
+  time: "O(n * iterations) for gradient descent"
+  space: "O(n)"
+tags:
+  - machine_learning
+  - classification
+  - binary
+  - 2d
+prerequisites:
+  - linear_regression
+  - sigmoid_function
+fallback_to_dynamic: false
+notes: "Bridge between regression and classification; foundation for neural networks."

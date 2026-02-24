@@ -1,0 +1,43 @@
+topic: decision_tree
+display_name: Decision Tree Classifier
+description: |
+  Decision trees recursively split data on feature thresholds to form a tree
+  structure for classification. Each internal node represents a test on a feature;
+  leaves represent class predictions. Interpretable but prone to overfitting.
+visual_structure: tree
+scene_class: DecisionTreeViz
+template_path: templates/templates.py
+sample_input: {"features": [[2.0, 3.0], [1.5, 2.0], [5.0, 6.0]], "labels": [0, 0, 1]}
+voiceover_snippets:
+  - "Decision trees recursively partition data into regions."
+  - "At each node, we split on a feature and threshold that best separates classes."
+  - "Splits are guided by metrics like Gini impurity or information gain."
+  - "Leaf nodes provide final class predictions."
+steps:
+  - name: build_tree
+    description: Construct tree by recursively splitting on best features.
+  - name: show_splits
+    description: Display split conditions and thresholds at each node.
+  - name: show_leaves
+    description: Highlight leaf nodes with class labels.
+  - name: predict_sample
+    description: Trace a sample path from root to leaf for prediction.
+allowed_actions:
+  - split_on_feature
+  - show_impurity
+  - highlight_path
+  - show_prediction
+  - prune_tree
+complexity:
+  time: "O(n log n) for building balanced tree; O(depth) for prediction"
+  space: "O(n) in worst case (linear tree)"
+tags:
+  - machine_learning
+  - classification
+  - tree
+  - interpretable
+prerequisites:
+  - information_theory
+  - gini_impurity
+fallback_to_dynamic: false
+notes: "Prone to overfitting; regularization (pruning, max_depth) helps generalization."

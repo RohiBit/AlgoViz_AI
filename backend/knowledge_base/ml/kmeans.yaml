@@ -1,0 +1,44 @@
+topic: kmeans_clustering
+display_name: K-Means Clustering
+description: |
+  K-Means partitions data into k clusters by iteratively assigning points to
+  nearest centroid and updating centroid positions. Unsupervised learning for
+  discovering natural groupings.
+visual_structure: scatter_plot_with_centroids
+scene_class: KMeansViz
+template_path: templates/templates.py
+sample_input: [[1.0, 1.0], [1.5, 2.0], [5.0, 5.0], [5.5, 6.0], [9.0, 1.0]]
+voiceover_snippets:
+  - "K-Means partitions data into k clusters."
+  - "Step 1: Initialize k centroids randomly."
+  - "Step 2: Assign each point to the nearest centroid."
+  - "Step 3: Update centroid positions as cluster averages."
+  - "Repeat until centroids converge (movements become negligible)."
+steps:
+  - name: plot_data
+    description: Show scatter plot of input data.
+  - name: initialize_centroids
+    description: Randomly initialize k centroid positions.
+  - name: iterations
+    description: Iterate through assignment and centroid update steps.
+  - name: final_clusters
+    description: Show final clusters with centroid positions.
+allowed_actions:
+  - plot_points
+  - initialize_centroids
+  - assign_to_cluster
+  - update_centroids
+  - highlight_clusters
+complexity:
+  time: "O(n * k * i) where i = iterations to convergence"
+  space: "O(n + k)"
+tags:
+  - machine_learning
+  - clustering
+  - unsupervised
+  - 2d
+prerequisites:
+  - distance_metrics
+  - clustering_concepts
+fallback_to_dynamic: false
+notes: "Sensitive to initialization; often run multiple times with different seeds."

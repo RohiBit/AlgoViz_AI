@@ -1,0 +1,44 @@
+topic: knn
+display_name: K-Nearest Neighbors (KNN)
+description: |
+  K-Nearest Neighbors is a simple instance-based classifier. For each test point,
+  it finds the k nearest training points and predicts the majority class. No
+  explicit model training; memory-intensive but interpretable.
+visual_structure: scatter_plot_with_distances
+scene_class: KNNViz
+template_path: templates/templates.py
+sample_input: {"k": 3, "train_data": [[0.5, 0.5], [1.0, 1.5], [3.5, 3.5], [4.0, 4.0]], "test_point": [2.0, 2.0]}
+voiceover_snippets:
+  - "K-Nearest Neighbors classifies based on proximity to training examples."
+  - "For a test point, find the k nearest neighbors in training data."
+  - "Predict the majority class among those k neighbors."
+  - "Distance metric (e.g., Euclidean) determines 'nearest'."
+steps:
+  - name: plot_data
+    description: Show training data points with classes.
+  - name: plot_test_point
+    description: Display the test point to classify.
+  - name: find_neighbors
+    description: Highlight the k nearest neighbors.
+  - name: predict
+    description: Show majority class vote and final prediction.
+allowed_actions:
+  - plot_points
+  - compute_distances
+  - highlight_neighbors
+  - show_votes
+  - predict_class
+complexity:
+  time: "O(n) for each prediction (without indexing); O(log n) with KD-trees"
+  space: "O(n) to store training data"
+tags:
+  - machine_learning
+  - classification
+  - instance_based
+  - lazy_learning
+  - 2d
+prerequisites:
+  - distance_metrics
+  - majority_voting
+fallback_to_dynamic: false
+notes: "Simple and interpretable; computationally expensive for large datasets without spatial indexing."
