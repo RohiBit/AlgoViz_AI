@@ -14,6 +14,27 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Import modular visualization classes
+from backend.templates import (
+    AlgoVizBaseScene,
+    # Data Structures
+    AVLTreeViz,
+    BinaryTreeViz,
+    RBTreeViz,
+    BTreeViz,
+    GraphSearchViz,
+    # Machine Learning 2D
+    LinearRegressionViz,
+    LogisticRegressionViz,
+    SVMViz,
+    KMeansViz,
+    DecisionTreeViz,
+    RandomForestViz,
+    KNNViz,
+    # Machine Learning 3D
+    GradientDescent3DViz,
+)
+
 # Redis and Celery Configuration
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0").rstrip('/')
 CELERY_AVAILABLE = False
@@ -258,27 +279,87 @@ def render_algorithm_sync(plan: dict) -> dict:
     topic = plan.get("topic", "")
     task_id = plan.get("task_id", "default")
     initial_data = plan.get("initial_data", [5, 3, 8, 1, 2])
+    output_path = f"media/{task_id}.mp4"
+    os.makedirs("media", exist_ok=True)
     
-    template_name = "bubble_sort"
-    class_name = "BubbleSortFullScene"
+    # Mapping of topic names to modular visualization classes
+    topic_to_class = {
+        "avl": AVLTreeViz,
+        "binary tree": BinaryTreeViz,
+        "binary search tree": BinaryTreeViz,
+        "bst": BinaryTreeViz,
+        "red-black": RBTreeViz,
+        "rb tree": RBTreeViz,
+        "rbtree": RBTreeViz,
+        "b-tree": BTreeViz,
+        "btree": BTreeViz,
+        "graph search": GraphSearchViz,
+        "bfs": GraphSearchViz,
+        "dfs": GraphSearchViz,
+        "dijkstra": GraphSearchViz,
+        "linear regression": LinearRegressionViz,
+        "logistic regression": LogisticRegressionViz,
+        "svm": SVMViz,
+        "support vector": SVMViz,
+        "k-means": KMeansViz,
+        "kmeans": KMeansViz,
+        "decision tree": DecisionTreeViz,
+        "random forest": RandomForestViz,
+        "knn": KNNViz,
+        "k-nearest": KNNViz,
+        "gradient descent": GradientDescent3DViz,
+    }
     
-    if "merge" in topic.lower():
+    # Check if topic matches any modular class
+    visualization_class = None
+    topic_lower = topic.lower()
+    
+    for key, cls in topic_to_class.items():
+        if key in topic_lower:
+            visualization_class = cls
+            break
+    
+    # Handle legacy sorting algorithms (static templates)
+    if "merge" in topic_lower:
         template_name = "merge_sort"
         class_name = "MergeSortTreeFinal"
-    elif "selection" in topic.lower():
+        template_path = f"templates/{template_name}.py"
+    elif "selection" in topic_lower:
         template_name = "selection_sort"
         class_name = "SelectionSortFullScene"
-    elif "bubble" in topic.lower():
+        template_path = f"templates/{template_name}.py"
+    elif "bubble" in topic_lower:
         template_name = "bubble_sort"
         class_name = "BubbleSortFullScene"
+        template_path = f"templates/{template_name}.py"
+    elif visualization_class:
+        # Use modular visualization class - create a temporary wrapper script
+        print(f"Using modular visualization: {visualization_class.__name__}")
+        template_name = f"modular_{visualization_class.__name__}"
+        try:
+            # Create temporary wrapper script for the modular class
+            module_name = visualization_class.__module__.split('.')[-1]
+            temp_script = f"""
+from backend.templates import {visualization_class.__name__}
+
+class DynamicScene({visualization_class.__name__}):
+    pass
+"""
+            temp_path = f"templates/dynamic_cache/temp_{task_id}.py"
+            os.makedirs("templates/dynamic_cache", exist_ok=True)
+            with open(temp_path, "w") as f:
+                f.write(temp_script)
+            
+            template_path = temp_path
+            class_name = "DynamicScene"
+            print(f"Created temporary wrapper for {visualization_class.__name__}")
+        except Exception as e:
+            print(f"Error creating wrapper for modular visualization: {e}")
+            print(f"Falling back to dynamic code generation for {topic}...")
+            return generate_dynamic_algorithm_manim(topic, initial_data, task_id)
     else:
         print(f"No static template for {topic}, generating dynamic Manim code...")
         return generate_dynamic_algorithm_manim(topic, initial_data, task_id)
-    
-    template_path = f"templates/{template_name}.py"
-    output_path = f"media/{task_id}.mp4"
-    
-    os.makedirs("media", exist_ok=True)
     
     command = ["manim", "-ql", "--disable_caching", "--write_to_movie", template_path, "DynamicScene"]
     
