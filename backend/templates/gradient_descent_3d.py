@@ -9,7 +9,6 @@ License: MIT
 """
 
 from manim import *
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 
