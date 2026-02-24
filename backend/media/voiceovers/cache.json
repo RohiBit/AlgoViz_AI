@@ -187,5 +187,77 @@
     },
     "original_audio": "selection-sort-always-performs-the-same-number-of-e700aa2c.mp3",
     "final_audio": "selection-sort-always-performs-the-same-number-of-e700aa2c.mp3"
+  },
+  {
+    "input_text": "Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly compares adjacent elements and swaps them if needed.",
+    "input_data": {
+      "input_text": "Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly compares adjacent elements and swaps them if needed.",
+      "service": "gtts"
+    },
+    "original_audio": "bubble-sort-is-a-simple-comparison-based-sorting-f57ad4da.mp3",
+    "final_audio": "bubble-sort-is-a-simple-comparison-based-sorting-f57ad4da.mp3"
+  },
+  {
+    "input_text": "It is called Bubble Sort because larger elements gradually bubble up to the end of the array.",
+    "input_data": {
+      "input_text": "It is called Bubble Sort because larger elements gradually bubble up to the end of the array.",
+      "service": "gtts"
+    },
+    "original_audio": "it-is-called-bubble-sort-because-larger-elements-dc8ac9d3.mp3",
+    "final_audio": "it-is-called-bubble-sort-because-larger-elements-dc8ac9d3.mp3"
+  },
+  {
+    "input_text": "First pass. The goal is to move the largest element to the end.",
+    "input_data": {
+      "input_text": "First pass. The goal is to move the largest element to the end.",
+      "service": "gtts"
+    },
+    "original_audio": "first-pass-the-goal-is-to-move-the-largest-element-276d5b36.mp3",
+    "final_audio": "first-pass-the-goal-is-to-move-the-largest-element-276d5b36.mp3"
+  },
+  {
+    "input_text": "Second pass. We ignore the last sorted element.",
+    "input_data": {
+      "input_text": "Second pass. We ignore the last sorted element.",
+      "service": "gtts"
+    },
+    "original_audio": "second-pass-we-ignore-the-last-sorted-element-4e881193.mp3",
+    "final_audio": "second-pass-we-ignore-the-last-sorted-element-4e881193.mp3"
+  },
+  {
+    "input_text": "Third pass. Only a few comparisons remain.",
+    "input_data": {
+      "input_text": "Third pass. Only a few comparisons remain.",
+      "service": "gtts"
+    },
+    "original_audio": "third-pass-only-a-few-comparisons-remain-c0ee23b1.mp3",
+    "final_audio": "third-pass-only-a-few-comparisons-remain-c0ee23b1.mp3"
+  },
+  {
+    "input_text": "Fourth pass. The array is now sorted.",
+    "input_data": {
+      "input_text": "Fourth pass. The array is now sorted.",
+      "service": "gtts"
+    },
+    "original_audio": "fourth-pass-the-array-is-now-sorted-9039a4a0.mp3",
+    "final_audio": "fourth-pass-the-array-is-now-sorted-9039a4a0.mp3"
+  },
+  {
+    "input_text": "If a full pass completes without any swaps, the algorithm can stop early.",
+    "input_data": {
+      "input_text": "If a full pass completes without any swaps, the algorithm can stop early.",
+      "service": "gtts"
+    },
+    "original_audio": "if-a-full-pass-completes-without-any-swaps-the-ab32529f.mp3",
+    "final_audio": "if-a-full-pass-completes-without-any-swaps-the-ab32529f.mp3"
+  },
+  {
+    "input_text": "Bubble Sort has a time complexity of order n squared, due to its nested loops.",
+    "input_data": {
+      "input_text": "Bubble Sort has a time complexity of order n squared, due to its nested loops.",
+      "service": "gtts"
+    },
+    "original_audio": "bubble-sort-has-a-time-complexity-of-order-n-ab32cf5e.mp3",
+    "final_audio": "bubble-sort-has-a-time-complexity-of-order-n-ab32cf5e.mp3"
   }
 ]
