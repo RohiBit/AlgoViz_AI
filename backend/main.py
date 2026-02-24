@@ -11,29 +11,59 @@ import sys
 import io
 from dotenv import load_dotenv
 
+# Ensure parent directory is in path for imports (works from any CWD)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 # Load environment variables from .env file
 load_dotenv()
 
-# Import modular visualization classes
-from backend.templates import (
-    AlgoVizBaseScene,
-    # Data Structures
-    AVLTreeViz,
-    BinaryTreeViz,
-    RBTreeViz,
-    BTreeViz,
-    GraphSearchViz,
-    # Machine Learning 2D
-    LinearRegressionViz,
-    LogisticRegressionViz,
-    SVMViz,
-    KMeansViz,
-    DecisionTreeViz,
-    RandomForestViz,
-    KNNViz,
-    # Machine Learning 3D
-    GradientDescent3DViz,
-)
+# Import modular visualization classes (use relative imports for backend module)
+try:
+    from templates import (
+        AlgoVizBaseScene,
+        # Data Structures
+        AVLTreeViz,
+        BinaryTreeViz,
+        RBTreeViz,
+        BTreeViz,
+        GraphSearchViz,
+        # Machine Learning 2D
+        LinearRegressionViz,
+        LogisticRegressionViz,
+        SVMViz,
+        KMeansViz,
+        DecisionTreeViz,
+        RandomForestViz,
+        KNNViz,
+        # Machine Learning 3D
+        GradientDescent3DViz,
+    )
+except ImportError:
+    # Fallback for absolute imports when backend is installed as package
+    from backend.templates import (
+        AlgoVizBaseScene,
+        # Data Structures
+        AVLTreeViz,
+        BinaryTreeViz,
+        RBTreeViz,
+        BTreeViz,
+        GraphSearchViz,
+        # Machine Learning 2D
+        LinearRegressionViz,
+        LogisticRegressionViz,
+        SVMViz,
+        KMeansViz,
+        DecisionTreeViz,
+        RandomForestViz,
+        KNNViz,
+        # Machine Learning 3D
+        GradientDescent3DViz,
+    )
 
 # Redis and Celery Configuration
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0").rstrip('/')
